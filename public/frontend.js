@@ -5,9 +5,15 @@ const messageForm = document.querySelector("#messageForm");
 messageForm.onsubmit = function (e) {
   e.preventDefault();
   const message = messageBox.value;
-  showMessageSent(message);
+  // prevent empty messages
+  if (message.trim() === "") {
+    return;
+  }
+  // escape message for security
+  const escapedMessage = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  showMessageSent(escapedMessage);
   messageBox.value = "";
-  sendMessageToServer(message);
+  sendMessageToServer(escapedMessage);
 };
 
 function showMessageSent(message) {

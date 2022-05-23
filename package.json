@@ -2,14 +2,19 @@
   "name": "websockets-chat-room",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./src/server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon ./src/server/server.js -e js,html,css --ignore node_modules"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ws": "^7.5.3"
+  },
+  "volta": {
+    "node": "16.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }

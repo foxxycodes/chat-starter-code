@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////
 
 const http = require("http");
-const CONSTANTS = require("./utils/constants.js");
+const CONSTANTS = require("../utils/constants.js");
 const fs = require("fs");
 const path = require("path");
 const WebSocket = require("ws");
@@ -18,7 +18,8 @@ const { PORT, CLIENT } = CONSTANTS;
 // Create the HTTP server
 const server = http.createServer((req, res) => {
   // get the file path from req.url, or '/public/index.html' if req.url is '/'
-  const filePath = req.url === "/" ? "/public/index.html" : req.url;
+  const filePath =
+    req.url === "/" ? "../../public/index.html" : "../../" + req.url;
 
   // determine the contentType by the file extension
   const extname = path.extname(filePath);
@@ -42,8 +43,13 @@ const wss = new WebSocket.Server({ server });
 // TODO
 // Exercise 5: Respond to connection events
 wss.on("connection", (ws, req) => {
-  ws.on("open", (ws) => {
-    console.log("Client connected");
+  console.log("Client connected");
+  wss.clients.forEach((client) => {
+    if (client !== ws) {
+      client.send(
+        JSON.stringify({ type: "message", data: "New user connected 🎉" })
+      );
+    }
   });
   // Exercise 6: Respond to client messages
   ws.on("message", (message) => {
@@ -51,6 +57,7 @@ wss.on("connection", (ws, req) => {
     broadcast(message, ws);
   });
   // Exercise 7: Send a message back to the client, echoing the message received
+
   // Exercise 8: Broadcast messages received to all other clients
 });
 
