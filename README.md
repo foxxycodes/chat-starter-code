@@ -1,4 +1,4 @@
-# 📧 WebSockets-ws Chat Application
+# 📧 WebSockets Chat Application
 
 ## 🚀 Getting Started
 
