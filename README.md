@@ -11,6 +11,8 @@ So we don't need to learn two different languages for front- and back-end.
 2. If you're working on a windows machine, make sure to enable [Developer-Mode](https://docs.microsoft.com/en-us/windows/uwp/get-started/enable-your-device-for-development#accessing-settings-for-developers).
 3. Use `volta install node@latest` to install the latest version of NodeJS. This automatically installs `npm`, a package manager for NodeJS.
 
+Of course you can just install [NodeJS](https://nodejs.org/en/download/) normally via a download and this project will work fine.
+
 ---
 
 ### 🏃 Run
